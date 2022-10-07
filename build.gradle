@@ -4,6 +4,11 @@ plugins {
     id 'checkstyle'
     id 'pmd'
     id 'com.github.spotbugs' version '4.7.5'
+    id 'info.solidsoft.pitest' version '1.7.4'
+}
+
+pitest{
+    junit5PluginVersion = '0.15'
 }
 
 group = 'com.gildedrose'

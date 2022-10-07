@@ -29,11 +29,27 @@ public class NormalItemTest {
         assertThat(element.toString(), is("foo, 9, 0"));
     }
     @Test
-    @DisplayName("Test NormalITem in sellIn< 0 case")
-    void testNormalItemSellInUnder0() {
-        Item element = new Item("foo", -1, 50);
+    @DisplayName("Test NormalITem in sellIn = 0 case")
+    void testNormalItemSellIn0() {
+        Item element = new Item("foo", 0, 2);
         GildedRose app = new GildedRose(new Item[] {element});
         app.updateQuality();
-        assertThat(element.toString(), is("foo, -2, 48"));
+        assertThat(element.toString(), is("foo, -1, 0"));
+    }
+    @Test
+    @DisplayName("Test NormalITem in sellIn = 0 case")
+    void testNormalItemSellIn0Quality1() {
+        Item element = new Item("foo", 0, 1);
+        GildedRose app = new GildedRose(new Item[] {element});
+        app.updateQuality();
+        assertThat(element.toString(), is("foo, -1, 0"));
+    }
+    @Test
+    @DisplayName("Test NormalITem in sellIn = 1 case")
+    void testNormalItemSellIn1() {
+        Item element = new Item("foo", 1, 50);
+        GildedRose app = new GildedRose(new Item[] {element});
+        app.updateQuality();
+        assertThat(element.toString(), is("foo, 0, 49"));
     }
 }
