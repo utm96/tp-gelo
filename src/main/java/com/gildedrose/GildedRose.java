@@ -2,8 +2,8 @@ package com.gildedrose;
 
 class GildedRose {
     Item[] items;
-    private static Integer MAX_QUALITY = 50;
-    private static Integer MIN_QUALITY = 0;
+    private static final Integer MAX_QUALITY = 50;
+    private static final Integer MIN_QUALITY = 0;
 
     public GildedRose(Item[] items) {
         this.items = items;
