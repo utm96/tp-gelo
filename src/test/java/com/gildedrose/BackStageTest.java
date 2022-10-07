@@ -45,7 +45,7 @@ public class BackStageTest {
         assertThat(element.toString(), is("Backstage passes to a TAFKAL80ETC concert, 9, 50"));
     }
     @Test
-    @DisplayName("Test item Backstage passes to a TAFKAL80ETC concert in sellIn=9, quality=49")
+    @DisplayName("Test item Backstage passes to a TAFKAL80ETC concert in sellIn=11, quality=48")
     void testBackStageInSellIn11Quality48() {
         Item element = new Item("Backstage passes to a TAFKAL80ETC concert", 11, 48);
         GildedRose app = new GildedRose(new Item[] {element});

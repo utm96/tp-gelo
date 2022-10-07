@@ -9,39 +9,55 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                    decreaseItemQualityBy1(item);
-                }
-            } else {
-                increaseItemQualityBy1(item);
-                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.sellIn < 11) {
-                        increaseItemQualityBy1(item);
-                    }
-                    if (item.sellIn < 6) {
-                        increaseItemQualityBy1(item);
-                    }
-                }
-
-            }
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
-            }
-            if (item.sellIn < 0) {
-                if (!item.name.equals("Aged Brie")) {
-                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            decreaseItemQualityBy1(item);
-                        }
-                    } else {
-                        item.quality = 0;
-                    }
-                } else {
-                    increaseItemQualityBy1(item);
-                }
+            switch (item.name) {
+                case "Aged Brie":
+                    updateAgedBrieItem(item);
+                    break;
+                case "Sulfuras, Hand of Ragnaros":
+                    updateSulfurasItem(item);
+                    break;
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    updateBackStageItem(item);
+                    break;
+                default:
+                    updateNormalItem(item);
+                    break;
             }
         }
+    }
+
+    public void updateBackStageItem(Item item) {
+        increaseItemQualityBy1(item);
+        if (item.sellIn < 11) {
+            increaseItemQualityBy1(item);
+        }
+        if (item.sellIn < 6) {
+            increaseItemQualityBy1(item);
+        }
+        item.sellIn = item.sellIn - 1;
+        if (item.sellIn < 0) {
+            item.quality = 0;
+        }
+    }
+
+    public void updateAgedBrieItem(Item item) {
+        item.sellIn = item.sellIn - 1;
+        increaseItemQualityBy1(item);
+        if (item.sellIn < 0) {
+            increaseItemQualityBy1(item);
+        }
+    }
+
+    public void updateNormalItem(Item item) {
+        item.sellIn = item.sellIn - 1;
+        decreaseItemQualityBy1(item);
+        if (item.sellIn < 0) {
+            decreaseItemQualityBy1(item);
+        }
+    }
+
+    public void updateSulfurasItem(Item item) {
+        //nothing to change
     }
 
     private void increaseItemQualityBy1(Item item) {
