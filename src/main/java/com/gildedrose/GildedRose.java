@@ -21,6 +21,9 @@ class GildedRose {
                 case "Backstage passes to a TAFKAL80ETC concert":
                     updateBackStageItem(item);
                     break;
+                case "Conjured Mana Cake":
+                    updateConjuredItem(item);
+                    break;
                 default:
                     updateNormalItem(item);
                     break;
@@ -54,6 +57,15 @@ class GildedRose {
         decreaseSellInBy1(item);
         decreaseItemQualityBy1(item);
         if (item.sellIn < 0) {
+            decreaseItemQualityBy1(item);
+        }
+    }
+    public void updateConjuredItem(Item item) {
+        decreaseSellInBy1(item);
+        decreaseItemQualityBy1(item);
+        decreaseItemQualityBy1(item);
+        if (item.sellIn < 0) {
+            decreaseItemQualityBy1(item);
             decreaseItemQualityBy1(item);
         }
     }
