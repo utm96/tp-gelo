@@ -5,8 +5,6 @@ import com.gildedrose.itemhandlers.ItemHandlerFactory;
 
 class GildedRose {
     Item[] items;
-    private static final Integer MAX_QUALITY = 50;
-    private static final Integer MIN_QUALITY = 0;
 
     public GildedRose(Item[] items) {
         this.items = items;
